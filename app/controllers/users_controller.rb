@@ -10,14 +10,17 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
+    @users = User.all
+    @user = current_user
   end
 
   def update
     @user = User.find(params[:id])
-    #byebug
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :new
+    end
   end
 
   private
