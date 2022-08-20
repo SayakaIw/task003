@@ -1,19 +1,21 @@
-<p id="notice"></p>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
             <h1>Editing Book</h1>
                 <%= form_with model: @book, method: :patch do |f| %>
+
                     <div class ="form-group">
                         <label for="book_title">Title</label><br>
                         <%= f.text_field :title, style:"width:100%" %>
                     </div>
                     <div class="form-group">
-                        <label for="book_opinion">Opinion</label><br>
-                        <%= f.text_area :opinion, style:"width:100%" %>
+                        <label for="book_body">Opinion</label><br>
+                        <%= f.text_area :body, style:"width:100%" %>
                     </div>
-                    <%= link_to "Update Book", book_path(@book), method: :patch, class: "btn btn-success" %>
+                    <%= f.submit "Update Book", class: "btn btn-success" %>
                 <% end %>
+
             <%= link_to "Show", book_path(@book) %>|
             <%= link_to "Back", books_path %>
         </div>
